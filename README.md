@@ -1,5 +1,3 @@
-Here's an updated README.md that includes comprehensive sections on building, running locally, and development:
-
 # Phone Whitelist Processor Web Application
 
 A web application for validating and processing phone number whitelist files, specifically designed for Philippine mobile numbers.
