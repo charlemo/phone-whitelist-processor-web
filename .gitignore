@@ -1,0 +1,55 @@
+# Logs
+logs/
+*.log
+
+# Maven target directory
+target/
+
+# IntelliJ IDEA project files
+*.iml
+.idea/
+
+# Eclipse project files
+.project
+.classpath
+.settings/
+
+# VS Code project files
+.vscode/
+
+# Node modules (if applicable)
+node_modules/
+
+# Temporary files
+*.tmp
+
+# Compiled class files
+*.class
+
+# Generated files
+generated-sources/
+generated-test-sources/
+
+# Maven specific files
+maven-archiver/
+maven-status/
+
+# Tomcat specific files
+tomcat/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Build directories
+build/
+out/
+
+# Dependency directories
+lib/
+
+# Java Server Pages (JSP) compiled files
+*.jsp.class
+
+# Local environment configuration
+.env

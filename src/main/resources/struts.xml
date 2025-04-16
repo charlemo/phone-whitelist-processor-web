@@ -1,0 +1,44 @@
+<!-- src/main/webapp/WEB-INF/struts.xml -->
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.ui.theme" value="simple" />
+    <constant name="struts.multipart.maxSize" value="1048576" /> <!-- 1MB -->
+    <constant name="struts.action.extension" value="action,," />
+    <constant name="struts.mapper.action.prefix.enabled" value="true" />
+    
+    <package name="default" namespace="/" extends="struts-default">
+        <!-- Default action for root path -->
+        <default-action-ref name="index" />
+        
+        <!-- Main index action -->
+        <action name="index">
+            <result>/pages/index.jsp</result>
+        </action>
+        
+        <!-- Process uploaded file action -->
+        <action name="uploadWhitelist" class="com.smartibf.actions.WhitelistUploadAction" method="upload">
+            <interceptor-ref name="defaultStack">
+                <param name="fileUpload.maximumSize">1048576</param>
+                <param name="fileUpload.allowedTypes">text/plain</param>
+            </interceptor-ref>
+            <result name="success">/pages/result.jsp</result>
+            <result name="input">/pages/index.jsp</result>
+            <result name="error">/pages/index.jsp</result>
+        </action>
+        
+        <!-- Download processed file action -->
+        <action name="downloadProcessed" class="com.smartibf.actions.WhitelistDownloadAction" method="download">
+            <result name="success" type="stream">
+                <param name="contentType">text/plain</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+            <result name="error">/pages/result.jsp</result>
+        </action>
+    </package>
+</struts>
